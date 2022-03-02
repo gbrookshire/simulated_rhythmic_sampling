@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+# Submit a job to sbatch on Bluebear
+# Usage:
+# ./slurmit '<python-file> <additional-python-args>' <additional-sbatch-args>
+# Example:
+# ./slurmit 'do_something.py arg1 arg2' -t 5:0 -m 10G
+
+sbatch_submit.py \
+    -s 'source load_python-simulated_rhythmic_sampling.sh' \
+    -i "python3 $1" "${@:2}"
