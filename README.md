@@ -4,6 +4,13 @@ This repository contains all the code used to run the analyses and produce the f
 > "Putative rhythms in attentional switching can be explained by aperiodic temporal structure." (In prep.)
 
 
+# Using these analyses on your own data
+
+To help make it easier to apply these analyses to new datasets, I've packaged the analysis methods into the [oscina](https://github.com/gbrookshire/oscina) library.
+
+
+# Reproducing the analyses in the published paper
+
 ## Requirements
 
 - Python 3
