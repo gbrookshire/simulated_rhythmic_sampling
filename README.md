@@ -1,7 +1,7 @@
 # simulated_rhythmic_sampling
 
 This repository contains all the code used to run the analyses and produce the figures for the paper:
-> "Putative rhythms in attentional switching can be explained by aperiodic temporal structure." (In prep.)
+> Brookshire, G. (In press) "Putative rhythms in attentional switching can be explained by aperiodic temporal structure." Nature Human Behaviour.
 
 
 # Using these analyses on your own data
