@@ -1,5 +1,3 @@
-# simulated_rhythmic_sampling
-
 This repository contains all the code used to run the analyses and produce the figures for the paper:
 > Brookshire, G. (In press) "Putative rhythms in attentional switching can be explained by aperiodic temporal structure." Nature Human Behaviour.
 
@@ -18,6 +16,11 @@ To help make it easier to apply these analyses to new datasets, I've packaged th
 - `mtspec` must be installed using conda: `$ conda install -c conda-forge mtspec`
 - The analyses in Fig. 6 require R and the *rcompanion* library.
 - To re-run the simulations, you can either run them one at a time (which will be very slow), or in parallel on a computing cluster. To use a cluster, you'll need to make sure the `sbatch` job scheduler in installed, as well as the helper bash function [`sbatch_submit`](https://github.com/gbrookshire/sbatch_submit).
+
+
+## Simulation results
+
+You can find the simulated data used in the paper here: https://osf.io/6bs4e/
 
 
 ## Analysis details
