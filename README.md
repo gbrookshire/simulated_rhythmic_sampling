@@ -1,6 +1,5 @@
 This repository contains all the code used to run the analyses and produce the figures for the paper:
-> Brookshire, G. (In press) "Putative rhythms in attentional switching can be explained by aperiodic temporal structure." Nature Human Behaviour.
-
+> [Brookshire, G. (2022) Putative rhythms in attentional switching can be explained by aperiodic temporal structure. *Nature Human Behaviour.*](https://www.nature.com/articles/s41562-022-01364-0)
 
 # Using these analyses on your own data
 
