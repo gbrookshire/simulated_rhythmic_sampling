@@ -9,7 +9,8 @@ import statsmodels.api as sm
 from statsmodels.stats.multitest import multipletests
 from scipy.ndimage import median_filter
 from skimage import measure
-from mtspec import mtspec
+# from mtspec import mtspec
+import multitaper
 from .utils import dft
 
 
@@ -68,10 +69,15 @@ def ar_surr(x, fs, k_perm, freq_cutoff=15, correction='cluster'):
     x = sm.tsa.tsatools.detrend(x, order=detrend_ord)
 
     # Estimate an AR model
-    mdl_order = (1, 0)
-    mdl = sm.tsa.ARMA(x, mdl_order)
-    result = mdl.fit(trend='c', disp=0)
+    # mdl_order = (1, 0)
+    # mdl = sm.tsa.ARMA(x, mdl_order)
+    # result = mdl.fit(trend='c', disp=0)
+    # result.summary()
+    mdl_order = (1, 0, 0)
+    mdl = sm.tsa.ARIMA(x, order=mdl_order, trend='c', ) # disp=0
+    result = mdl.fit()
     result.summary()
+
     # Make a generative model using the AR parameters
     arma_process = sm.tsa.ArmaProcess.from_coeffs(result.arparams)
     # Simulate a bunch of time-courses from the model
@@ -185,11 +191,13 @@ def robust_est(x, fs, nw=1.5, n_tapers=None,
     # Compute spectrum using multitapers
     if n_tapers is None:  # Number of tapers
         n_tapers = int(2 * nw) - 1
-    spec, freq = mtspec(data=x,
-                        delta=fs ** -1,
-                        time_bandwidth=nw,
-                        number_of_tapers=n_tapers,
-                        statistics=False, rshape=0)
+    # spec, freq = mtspec(data=x,
+    #                     delta=fs ** -1,
+    #                     time_bandwidth=nw,
+    #                     number_of_tapers=n_tapers,
+    #                     statistics=False, rshape=0)
+    freq, spec = multitaper.MTSpec(x=x, nw=nw, kspec=n_tapers, dt=1/fs).rspec()
+    freq, spec = freq[:, 0], spec[:, 0]
 
     # Smooth the spectrum with a median filter
     spec_filt = median_filter(spec, med_filt_win)
